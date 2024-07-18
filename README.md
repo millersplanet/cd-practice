@@ -3,6 +3,10 @@
 https://vercel.com/docs/speed-insights/quickstart
 
 
+# Sentry for Next.js
+https://docs.sentry.io/platforms/javascript/guides/nextjs/
+
+
 # Next.js + Jest
 
 This example shows how to configure Jest to work with Next.js.
