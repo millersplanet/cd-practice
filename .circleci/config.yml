@@ -3,6 +3,7 @@
 version: 2.1
 orbs:
   node: circleci/node@5
+  cypress: cypress-io/cypress@3.3.1
 jobs:
   test-node:
     # Install node dependencies and run tests
@@ -51,6 +52,16 @@ jobs:
       - run:
           name: found github actions config
           command: ':'
+  cypress-run:
+    executor:
+      name: cypress/default
+      node-version: "20.6.0"
+    steps:
+      - cypress/install
+      - cypress/run-tests:
+          cypress-command: "npx wait-on@latest https://cd-practice-steel.vercel.app && npx cypress run"
+          start-command: "npm run build && npm run start"
+  
 workflows:
   build-and-test:
     jobs:
@@ -58,6 +69,7 @@ workflows:
       - build-node:
           requires:
             - test-node
-    # - deploy:
-    #     requires:
-    #       - build-node
+      - deploy:
+          requires:
+            - build-node
+      - cypress-run
