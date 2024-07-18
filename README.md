@@ -1,3 +1,8 @@
+# Vercel Speed Insights
+
+https://vercel.com/docs/speed-insights/quickstart
+
+
 # Next.js + Jest
 
 This example shows how to configure Jest to work with Next.js.
